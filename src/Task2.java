@@ -34,10 +34,12 @@ public class Task2 extends Application {
 
         pusher.setOnAction(e -> {
             File selectedFile = fileChooser.showOpenDialog(stage);
+            name.setText(selectedFile.getAbsolutePath());
+
         });
 
         Group root = new Group(pusher, name, picture);
-
+        name.setStyle("-fx-padding: 30px");
         stage.setScene(new Scene(root, 400, 650));
         stage.setTitle("ImageChoose");
         stage.setResizable(false);
