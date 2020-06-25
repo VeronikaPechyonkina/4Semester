@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
@@ -20,7 +21,8 @@ import java.util.Optional;
 public class Task2 extends Application {
     Button pusher = new Button("выбрать фото");
     Label name = new Label();
-    ImageView picture = new ImageView();
+    ImageView picture;
+    Image pict;
 
     public static void main(String[] args) {
 
@@ -31,15 +33,15 @@ public class Task2 extends Application {
     public void start(Stage stage) {
 
         FileChooser fileChooser = new FileChooser();
-
+        Group root = new Group(pusher);
         pusher.setOnAction(e -> {
             File selectedFile = fileChooser.showOpenDialog(stage);
             name.setText(selectedFile.getAbsolutePath());
-
+            pict = new Image("file:" + selectedFile.getAbsolutePath());
+            picture = new ImageView(pict);
+            root.getChildren().addAll(picture,name);
+            name.setStyle("-fx-padding: 30px");
         });
-
-        Group root = new Group(pusher, name, picture);
-        name.setStyle("-fx-padding: 30px");
         stage.setScene(new Scene(root, 400, 650));
         stage.setTitle("ImageChoose");
         stage.setResizable(false);
