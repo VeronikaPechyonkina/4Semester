@@ -8,7 +8,7 @@ class PGMImage {
     private int[][] colors;
 
     public PGMImage(int height, int width){
-        int[][] colors = new int[height][width];
+        this.colors = new int[height][width];
     }
 
     public void setPixel(int x, int y, int color){
@@ -28,8 +28,8 @@ class PGMImage {
 
         PrintStream image = new PrintStream(filename, StandardCharsets.UTF_8);
         image.println("P2");
-        image.println(this.getHeight());
         image.println(this.getWidth());
+        image.println(this.getHeight());
         image.println("255");
 
         for (int x = 0; x < this.getHeight(); x++) {
