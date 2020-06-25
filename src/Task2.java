@@ -3,6 +3,7 @@ import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.geometry.Insets;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -27,6 +29,12 @@ public class Task2 extends Application {
 
     @Override
     public void start(Stage stage) {
+
+        FileChooser fileChooser = new FileChooser();
+
+        pusher.setOnAction(e -> {
+            File selectedFile = fileChooser.showOpenDialog(stage);
+        });
 
         Group root = new Group(pusher, name, picture);
 
