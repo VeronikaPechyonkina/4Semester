@@ -1,5 +1,7 @@
 import java.io.PrintStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.lang.Exception;
 
 
 class PGMImage {
@@ -14,11 +16,11 @@ class PGMImage {
     }
 
     public int getWidth() {
-        return this.colors.length;
+        return this.colors[0].length;
     }
 
     public int getHeight() {
-        return this.colors[0].length;
+        return this.colors.length;
     }
 
     public void saveTo(String filename) throws Exception{
@@ -41,7 +43,7 @@ class PGMImage {
 
 public class Task1 {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         PGMImage Pic1 = new PGMImage(60,80);
 
