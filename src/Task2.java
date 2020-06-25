@@ -28,12 +28,13 @@ public class Task2 extends Application {
     @Override
     public void start(Stage stage) {
 
-        Group root = new Group();
+        Group root = new Group(pusher, name, picture);
 
         stage.setScene(new Scene(root, 400, 650));
         stage.setTitle("ImageChoose");
         stage.setResizable(false);
         stage.show();
+
     }
 }
 
