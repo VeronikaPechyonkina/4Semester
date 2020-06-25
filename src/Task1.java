@@ -1,11 +1,6 @@
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Optional;
-import java.util.Random;
+
 
 class PGMImage {
     private int[][] colors;
@@ -46,8 +41,23 @@ class PGMImage {
 
 public class Task1 {
 
-    public static void main(String[] args){
-        PGMImage Pic1 = new PGMImage(60,80){};
-        PGMImage Pic2 = new PGMImage(60,80){};
+    public static void main(String[] args) throws Exception{
+
+        PGMImage Pic1 = new PGMImage(60,80);
+
+        for (int i = 0; i < Pic1.getHeight(); i++) {
+            for (int j = 0; j < Pic1.getWidth(); j++) {
+                Pic1.setPixel(i, j, (int) (Math.random()*256));
+            }
+        }
+        Pic1.saveTo("PicRandom.pgm");
+
+
+        PGMImage Pic2 = new PGMImage(60,80);
+        for (int i = 0; i < Pic2.getHeight(); i++)
+            for (int j = 0; j < Pic2.getWidth(); j++)
+                Pic2.setPixel(i, j, (i + j) % 256);
+
+        Pic2.saveTo("PicGradient.pgm");
     }
 }
