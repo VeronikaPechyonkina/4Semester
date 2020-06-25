@@ -33,16 +33,22 @@ public class Task2 extends Application {
     public void start(Stage stage) {
 
         FileChooser fileChooser = new FileChooser();
-        Group root = new Group(pusher);
+        BorderPane root = new BorderPane();
+        root.setTop(pusher);
+        root.setPrefSize(400, 300);
+
+
         pusher.setOnAction(e -> {
             File selectedFile = fileChooser.showOpenDialog(stage);
             name.setText(selectedFile.getAbsolutePath());
             pict = new Image("file:" + selectedFile.getAbsolutePath());
             picture = new ImageView(pict);
-            root.getChildren().addAll(picture,name);
+            root.setCenter(picture);
+            root.setBottom(name);
             name.setStyle("-fx-padding: 30px");
+
         });
-        stage.setScene(new Scene(root, 400, 650));
+        stage.setScene(new Scene(root, 400, 450));
         stage.setTitle("ImageChoose");
         stage.setResizable(false);
         stage.show();
